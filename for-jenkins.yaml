@@ -1,0 +1,7 @@
+kind: Pod                              
+apiVersion: v1                                    
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Its a statement from inside the Container; sleep 5 ; done"]

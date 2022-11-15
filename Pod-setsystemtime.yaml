@@ -1,0 +1,23 @@
+#Create a new pod call admin-pod
+#Use image Busybox
+#ALl pod to set system_time
+#Container should sleep for 3200 sec
+#
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: admin-pod
+  name: admin-pod
+spec:
+  containers:
+  - command:
+    - sleep
+    - "3200"
+    image: busybox
+    name: admin-pod-container
+    securityContext:
+       capabilities:
+           add: ["SYS_TIME"]
+

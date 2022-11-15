@@ -1,0 +1,32 @@
+#Create a deployment by name web-proj-268 with nginx:1.16
+#Rollout update to nginx:1.17
+#Record the Rollout history
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-proj-268
+  name: web-proj-268
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-proj-268
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-proj-268
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        resources: {}
+
+
+#kubectl describe deployments.app | grep -i image
+#Change Image: kubectl set image deployment web-proj-268 nginx=nginx:1.17 --record
+#kubectl rollout history deployment web-proj-268

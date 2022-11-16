@@ -1,0 +1,21 @@
+#kubectl run web-load-123 --image=joydeep2022/nginx_tweet_app:v1 --labels base=nginx-web --dry-run=client -o yaml
+
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    base: nginx-web
+  name: web-load-123
+spec:
+  containers:
+  - image: joydeep2022/nginx_tweet_app:v1
+    name: web-load-123
+
+
+
+#TO CHECK LABELS:
+#kubectl get pod --show-labels

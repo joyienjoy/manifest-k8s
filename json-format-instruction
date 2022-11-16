@@ -1,0 +1,15 @@
+#Get the node : Node 1
+#Extract Node details in JSON format
+#Store the output in file at location: /opt/outputs/nodes-fz.json
+
+
+CHECK NODES AVAIALBLE:
+kubectl get nodes
+
+
+GET NODE IN JSON FORMAT:
+kubectl get node <node name> -o json > /opt/outputs/nodes-fz.json
+
+
+VERIFY DATA:
+cat /opt/outputs/nodes-fz.json

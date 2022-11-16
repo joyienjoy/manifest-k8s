@@ -1,0 +1,25 @@
+#Create a static pod on Node01 (node is fixed)
+#Image used is nginx
+#Make sure Pod is recreated in case of failure
+
+
+#STEP1: ENTER Node01 using ssh
+#ssh node01
+# : ps -aux | grep kubelet   -- copy path -config=/var/lib/kubelet/config.yaml
+# : cat /var/lib/kubelet/config.yaml | grep staticPod
+# --> staticPodPath: /etc/kubernetes/manifests
+# : cd /etc/kubernetes/manifests
+# : vi staticpod-1.yaml
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+   name: static-nginx
+spec:
+   containers:
+   - name: static-nginx-pod
+     image: joydeep2022/nginx_tweet_app:v1
+
+#Exit the Node
+#You can check the pod creation: kubectl get pod

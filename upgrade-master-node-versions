@@ -1,0 +1,63 @@
+#If the present Version of Master Node (Controlplane) and Slave Node(Worker) is v1.18.0
+#You have to Upgrade it to v1.19.0
+
+CHECK THE PRESENT VERSION:
+kubectl get nodes
+
+------------------------------------------------
+
+DRAIN THE MASTER NODE
+
+kubectl drain controlplane --ignore-daemonsets
+
+START THE UPDATE PROCESS:
+
+apt update
+
+apt install kubeadm=v1.19.0
+
+kubeadm upgrade apply v1.19.0
+
+apt install kubelet=1.19.0
+
+systemctl restart kubelet
+
+
+CHECK THE NODE STATUS:
+
+kubectl get node
+
+kubectl uncordon controlplane
+
+---------------------------------------------
+
+DRAIN THE WORKER NODE:
+
+kubectl drain <node-name> --ignore-daemonset
+
+CHECK FOR ANY WORKING POD:
+
+kubectl get pod -o wide
+
+UPDATE THE NODE:
+
+ssh <node-name>
+
+: apt update
+
+: apt install kubeadm=1.19.0 -y
+
+: kubeadm upgrade node
+
+: apt install kubelet=1.19.0
+
+: systemctl restart kubelet
+
+: exit from node
+
+CHECK VERSION OF NODE
+
+kubectl get node
+
+kubectl uncordon node-name
+ 

@@ -1,0 +1,17 @@
+#Multicontainer Pod
+#
+#
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+    labels:
+       run: multi-pod
+    name: multipod-deployment
+spec:
+    containers:
+    - image: joydeep2022/node-shophome:v3
+      name: container1
+    - image: joydeep2022/fastapi-meeting
+      name: container2 

@@ -1,0 +1,23 @@
+#Define a namespace: defence
+#Create a pod name: delta-pod
+#Pod belongs to environment env=dev and tier=front
+#use a image
+#
+#
+
+#Create Namespace
+#kubectl create ns defence
+#kubectl get ns 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: dev
+    tier: front
+  name: delta-pod
+  namespace: defence
+spec:
+  containers:
+  - image: joydeep2022/fastapi-meeting:v1
+    name: delta-pod

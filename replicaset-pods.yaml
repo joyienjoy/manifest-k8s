@@ -1,0 +1,26 @@
+#Crete a deployment with name web-003
+#Scale it to 3 replicas
+#Desired number of pods must be always active
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: calculator
+  name: web-003
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      containers:
+      - image: joydeep2022/nodejs-calculator:1
+        name: nodejs-calculator
